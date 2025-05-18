@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Interactive Data Randomizer Visualization</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Interactive Data Randomizer</h1>
+
+    <div class="controls" aria-label="Main controls">
+        <button id="randomize-btn" aria-label="Randomize Data">Randomize Data</button>
+
+        <div class="toggle-buttons" role="group" aria-label="View toggles">
+            <button data-view="pie" class="active" aria-pressed="true" title="Pie Chart">Pie Chart</button>
+            <button data-view="bar" aria-pressed="false" title="Bar Chart">Bar Chart</button>
+            <button data-view="list" aria-pressed="false" title="List View">List</button>
+        </div>
+    </div>
+
+    <form id="category-form" class="category-inputs" aria-label="Category management">
+        <input type="text" id="new-category-name" placeholder="Category name" spellcheck="false" aria-label="New category name" autocomplete="off" />
+        <input type="color" id="new-category-color" aria-label="New category color" value="#4ade80" />
+        <button type="submit" aria-label="Add category">Add Category</button>
+        <button type="button" id="reset-btn" aria-label="Reset to default categories" title="Reset default categories">Reset</button>
+    </form>
+
+    <div id="chart-container" role="region" aria-live="polite" aria-atomic="true" aria-label="Data visualization container">
+        <canvas id="chart" role="img" aria-label="Chart visualization"></canvas>
+        <ul class="data-list" style="display:none;"></ul>
+    </div>
+
+    <div class="footer-controls" aria-label="Additional controls">
+        <div class="left">
+            <label for="filter-input">Search List:</label>
+            <input type="search" id="filter-input" placeholder="Filter categories" aria-controls="data-list" aria-label="Filter categories in list view" />
+        </div>
+        <div class="right">
+            <button class="export-btn" id="export-json" aria-label="Export data as JSON">Export JSON</button>
+            <button class="export-btn" id="export-csv" aria-label="Export data as CSV">Export CSV</button>
+            <button class="export-btn" id="export-pdf" aria-label="Export data as PDF">Export PDF</button>
+        </div>
+    </div>
+
+    <p class="summary" aria-live="polite" aria-atomic="true" id="summary-text"></p>
+    <p class="instructions">Add, remove, and customize categories. Randomize values and toggle views. Export your data.</p>
+
+    <!-- Load dependencies for PDF generation -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
